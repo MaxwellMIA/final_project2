@@ -1,98 +1,79 @@
 class Area:
-    def __init__(self, name, description, exits):
-        self.name = name
-        self.description = description
-        self.exits = exits
+    def __init__(self):
+        self.name = 0
+        self.description = 0
+        self.exits = 0
 
-
-    def describe(self):
+    def print_area(self):
         print(f"You are in {self.name}.")
         print(self.description)
-        print("directions", ", ".join(self.exits.keys()))
+        print("What would you like to do?")
+        command = input("~Travel, Look, Interact~ ").lower()
 
-areas = {
-    "Bedroom": "Bedroom",
-    "Hallway": "Hallway",
-    "Bathroom": "Bathroom",
+        if command == "travel":
+            print("Where do you want to go?")
+            command = input(f"~{self.exits}, back~ ").lower()
+            if command == self.exits:
+                print(f"You walk to {self.exits}")
+                # add smt to print out next areas stuff
+            if command == "back":
+                print("You've changed your mind.")
+                # make it avaible to redo the "what would you like to do" to run though these 3 if statments again
 
-}
+        if command == "look":
+            print(self.look)
+            # make it avaible to redo Nhe "what would you like to do" to run though these 3 if statments again
 
-'''
-class Game:
-    def __init__(self):
-        self.areas = {}
-        self.current_area = None
-        self.running = True
-
-
-    def add_area(self, area):
-        self.areas[area.name] = area
-
-
-    def set_start(self, area_name):
-        if area_name in self.areas:
-            self.current_area = self.areas[area_name]
-        else:
-            raise ValueError(f"area '{area_name}' not isnt real")
+        if command == "interact":
+            print(self.interact)
 
 
-    def move(self, direction):
-        if direction in self.current_area.exits:
-            next_area_name = self.current_area.exits[direction]
-            self.current_area = self.areas[next_area_name]
-        else:
-            print("you cant go there")
+bedroom = Area()
+bedroom.name = "Bedroom"
+bedroom.description = "It's your bedroom. It seems messier then it was yesterday."
+bedroom.exits = "Hallway"
+bedroom.look = "It's your childhood bedroom, the walls have faded in color over the years. Trash litters your desk and the floor, while your bed is covered in dirty clothes you haven't feel like moving."
+bedroom.interact = "Bed, Computer, Bookshelf"
+bedroom.print_area()
 
+hallway = Area()
+hallway.name = "Hallway"
+hallway.description = "A short hallway."
+hallway.exits = "Bedroom, Bathroom, Stairs"
+hallway.look = "There is spots of paint missing from the wall where paintings used to hang. Most of the photos got taken down after the divorce"
+hallway.interact = "Plant"
 
-    def run(self):
-        print("test run 3")
-        while self.running:
-            self.current_area.describe()
-            command = input("where would you like to go? ").strip().lower()
+bathroom = Area()
+bathroom.name = "Bathroom"
+bathroom.description = "A plain bathroom. It's cleaner then your room."
+bathroom.exits = "Hallway"
+bathroom.look = "The mirror on the wall taunts you, you feel a way of dread come over you."
+bathroom.interact = "Mirror"
 
+stairs = Area()
+stairs.name = "Stairs"
+stairs.description = None #add later
+stairs.exits = "Hallway, Living room"
+stairs.look = None # add later
+stairs.interact = "There is nothing to interact with."
 
-            if command in ["quit", "exit"]:
-                print("bye")
-                self.running = False
-            elif command in self.areas:
-                if command == self.current_area:
-                    print("You're already there")
-                else:
-                    self.move(command)
-            else:
-                print("invaild command try agsin")
+livingroom = Area()
+livingroom.name = "Living room"
+livingroom.description = "The living room seems darker then normal."
+livingroom.exits = "Stairs, Kitchen, Yard,"
+livingroom.look = None # add later
+livingroom.interact = "TV, Front door, clock"
 
+kitchen = Area()
+kitchen.name = "Kitchen"
+kitchen.description = None # add later
+kitchen.exits = "Living room"
+kitchen.look = None # add later
+kitchen.interact = "Fridge, Microwave, Table"
 
-game = Game()
-
-
-game.add_area(Area(
-    "Bedroom",
-    "It’s your bedroom. You should really tidy up more.",
-    {"north": "Hallway"}
-))
-
-
-game.add_area(Area(
-    "Hallway",
-    "A small hallway",
-    {"south": "Bedroom", "east": "Bathroom"}
-))
-
-
-game.add_area(Area(
-    "Bathroom",
-    "It’s cleaner then the rest of your house.",
-    {"west": "Hallway"}
-))
-
-
-game.set_start("Bedroom")
-
-
-if __name__ == "__main__":
-    try:
-        game.run()
-    except KeyboardInterrupt:
-        print("You quit the game.")
-'''
+yard = Area()
+yard.name = "Yard"
+yard.description = None # add later
+yard.exits = "Living room"
+yard.look = None # add later
+yard.interact = "Tree house, Flower patch, Clover patch"

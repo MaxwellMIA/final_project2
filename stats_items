@@ -1,0 +1,4 @@
+player_stats = {"Health": 100, "Stress": 0}
+
+if command == "stats":
+    print(f"text {player_stats['Health']} {player_stats['Stress']}")

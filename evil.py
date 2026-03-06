@@ -1,16 +1,5 @@
 # Error code that doesnt work just incase i need something from it please please please ignore :(((
-
 '''
-"Yard"
-
-
-
-
-
-
-
-
-
 class Game:
     def __init__(self):
         self.areas = {}

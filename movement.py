@@ -15,6 +15,7 @@ class Area:
             command = input(f"~{self.exits}, back~ ").lower()
             if command == self.exits:
                 print(f"You walk to {self.exits}")
+                current_area = {self.exits}
                 # add smt to print out next areas stuff
             if command == "back":
                 print("You've changed your mind.")
@@ -27,6 +28,8 @@ class Area:
         if command == "interact":
             print(self.interact)
 
+starting_area = "bedroom"
+current_area = starting_area
 
 bedroom = Area()
 bedroom.name = "Bedroom"
@@ -34,7 +37,6 @@ bedroom.description = "It's your bedroom. It seems messier then it was yesterday
 bedroom.exits = "Hallway"
 bedroom.look = "It's your childhood bedroom, the walls have faded in color over the years. Trash litters your desk and the floor, while your bed is covered in dirty clothes you haven't feel like moving."
 bedroom.interact = "Bed, Computer, Bookshelf"
-bedroom.print_area()
 
 hallway = Area()
 hallway.name = "Hallway"
@@ -77,3 +79,18 @@ yard.description = None # add later
 yard.exits = "Living room"
 yard.look = None # add later
 yard.interact = "Tree house, Flower patch, Clover patch"
+
+if current_area == "bedroom":
+    bedroom.print_area()
+if current_area == "hallway":
+    hallway.print_area()
+if current_area == "bathroom":
+    bathroom.print_area()
+if current_area == "stairs":
+    stairs.print_area()
+if current_area == "living room":
+    livingroom.print_area()
+if current_area == "kitchen":
+    kitchen.print_area()
+if current_area == "yard":
+    yard.print_area()
